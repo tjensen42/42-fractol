@@ -44,4 +44,6 @@ The Makefile in every library should at least contain these rules:
 
 3. Remove the entry in .gitmodules and remove the submodule directory located at path/to/submodule <br> ```git rm -f path/to/submodule```
 
-**Rempve 'preinstalled' libft:** ```git submodule deinit -f libs/libft && rm -rf .git/modules/libs/libft && git rm -f libs/libft```
+**Remove 'preinstalled' libft:** 
+
+```git submodule deinit -f libs/libft && rm -rf .git/modules/libs/libft && git rm -f libs/libft```
