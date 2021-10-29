@@ -37,13 +37,13 @@ The Makefile in every library should at least contain these rules:
 5. **Makefile:** Add all *.c files to the SRCS variable
 6. **Makefile:** Name all libs in the LDLIBS variable ```libft -> "-lft" || libmath -> "-lmath"```
 
-**To remove a submodule from your repo you can delete it this way:**
+## To remove a submodule from your repo you can delete it this way:
 1. Remove the submodule entry from .git/config <br> ```git submodule deinit -f path/to/submodule```
 
 2. Remove the submodule directory from the superproject's .git/modules directory <br> ```rm -rf .git/modules/path/to/submodule```
 
 3. Remove the entry in .gitmodules and remove the submodule directory located at path/to/submodule <br> ```git rm -f path/to/submodule```
 
-**Remove 'preinstalled' libft:** 
+## Remove 'preinstalled' libft:
 
 ```git submodule deinit -f libs/libft && rm -rf .git/modules/libs/libft && git rm -f libs/libft```
