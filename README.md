@@ -1,6 +1,6 @@
 # 42-fractol
 
-Fract`ol is on of the first computer graphics projects in the 42 core curriculum, where you work with the miniLibx-Library. The project is meant to create graphically beautiful fractals. Its really inspiring to dive into this topic and create some sort of psychedelic effects on the screen. 
+Fract`ol is on of the first computer graphics projects in the 42 core curriculum, where you work with the miniLibx-Library. The project is meant to create graphically beautiful fractals. Its really inspiring to dive into this topic and create some sort of psychedelic effects on the screen.
 
 ### 🧭 Start here
 
