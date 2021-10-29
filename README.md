@@ -1,47 +1,47 @@
-# Sample C Project Structure
+# 42-fractol
 
-This is really just an example template-structure for a C project.
+Fract`ol is on of the first computer graphics projects in the 42 core curriculum, where you work with the miniLibx-Library. The project is meant to create graphically beautiful fractals. Its really inspiring to dive into this topic and create some sort of psychedelic effects on the screen. 
 
-There is no 'standard' C project structure, it really depends on the project and your personal application and your needs.
+### 🧭 Start here
 
-But in general it is always good to have some kind of structure and being aware of that it matches with the type and scope of the project.
+**The only supported and tested operating system to compile this programm is ```macOS```.**
 
-I created this repo for myself to use it as git-template for the most 42 core curriculum projects.
+1. Clone Repo and run: ```make release```
+2. To see the possibilities to start the programm, run it just with: ```./fractol```
 
-```
-.
-├── include/
-│   ├ header.h
-│   └ ...
-├── libs/
-│   ├ libft
-│   └ ...
-├── src/
-│   ├ project.c
-│   └ ...
-├── .gitignore
-├── .gitmodules
-├── Makefile
-└── README.md
-```
+**General example:** ```./fractol mandelbrot```
+* [julia-fractal] start the programm with 2 additional arguments, for example: ```./fractol julia 0.28 0.008```
 
-The Makefile in every library should at least contain these rules:
-```all``` ```clean``` ```fclean``` ```re``` ```debug``` ```release```
+<hr>
 
-## How to use it
+### 🕹 Take the control:
+| Key / Input  | What it does |
+| :---         | :---         |
+| ```ARROWS```  | move through the picture |
+| ```.```  | change color scheme |
+| ```+``` & ```-``` | change the max iteration depth |
+| ```SPACE BAR```  | [just julia-fractal] hit it ones and you be able to move the mouse to change the julia constant |
+| ```Num Keys (1, 2, 3, ...)```  | change into different fractals |
+| ```R```  | reset to default parameters |
+| ```ESC```  | exit the Programm |
 
-1. **Create** new repo based on this template.
-2. **Rename** project.c & project.h file and change header protection (#ifndef...)
-3. **Add libraries** if you have additional ones for your project
-- for example: ```git submodule add <libft-repo-link> libs/libft```
-5. **Makefile:** Add all *.c files to the SRCS variable
-6. **Makefile:** Name all libs in the LDLIBS variable ```libft -> "-lft" || libmath -> "-lmath"```
+<hr>
 
-**To remove a submodule from your repo you can delete it this way:**
-1. Remove the submodule entry from .git/config <br> ```git submodule deinit -f path/to/submodule```
+<br>
+<h3 align="center">Sample output:</h3>
 
-2. Remove the submodule directory from the superproject's .git/modules directory <br> ```rm -rf .git/modules/path/to/submodule```
+<img width="1112" alt="Startup Screen / Fractal Mandelbrot" src="https://user-images.githubusercontent.com/56789534/134894764-b97280e8-534f-46d7-93f6-c1eea4464934.png">
+<img width="992" alt="Seahorse paradise in Mandelbrot" src="https://user-images.githubusercontent.com/56789534/134895035-e320a04b-d25c-4e45-b5b4-bab20d4b1737.png">
+<img width="993" alt="Some random are in a fractal" src="https://user-images.githubusercontent.com/56789534/134894702-52a09d27-586c-4b5f-a7f5-f1fb3577869f.png">
 
-3. Remove the entry in .gitmodules and remove the submodule directory located at path/to/submodule <br> ```git rm -f path/to/submodule```
 
-**Rempve 'preinstalled' libft:** ```git submodule deinit -f libs/libft && rm -rf .git/modules/libs/libft && git rm -f libs/libft```
+
+<br>
+<hr>
+<b>*All 42 projects must be written in C (later C++) in accordance to the 42 School Norm.<br></b>
+<br>
+
+> #### Sample restrictions:
+> - All variables have to be declared and aligned at the top of each function
+> - Each function can not have more then 25 lines
+> - Projects should be created with allowed std functions otherwise it is cheating

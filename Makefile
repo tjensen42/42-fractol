@@ -6,17 +6,20 @@
 #    By: tjensen <tjensen@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/27 22:03:08 by tjensen           #+#    #+#              #
-#    Updated: 2021/10/28 15:02:57 by tjensen          ###   ########.fr        #
+#    Updated: 2021/10/29 10:19:29 by tjensen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		:= project
+NAME		:= fractol
 
 CC			:= gcc
 CFLAGS		:= -Wall -Wextra -Werror
 
-SRCS		:= project.c
-LDLIBS		:= -lft
+SRCS		:= main.c fractol.c color.c helper.c utils.c \
+			   key_actions.c mouse_actions.c \
+			   fractal_mandelbrot.c fractal_julia.c \
+			   fractal_burning_ship.c fractal_celtic_mandelbrot.c
+LDLIBS		:= -lm -lft -lmlx -framework OpenGL -framework AppKit
 
 LIBDIRS		:= $(wildcard libs/*)
 LDLIBS		:= $(addprefix -L./, $(LIBDIRS)) $(LDLIBS)
@@ -25,13 +28,6 @@ INCLUDES	:= -I./include/ $(addprefix -I./, $(addsuffix /include, $(LIBDIRS)))
 SDIR		:= src
 ODIR		:= obj
 OBJS		:= $(addprefix $(ODIR)/, $(SRCS:.c=.o))
-
-# COLORS
-Y 			= "\033[33m"
-R 			= "\033[31m"
-G 			= "\033[32m"
-B 			= "\033[34m"
-X 			= "\033[0m"
 
 # **************************************************************************** #
 #	SYSTEM SPECIFIC SETTINGS							   					   #
@@ -63,7 +59,7 @@ all: $(NAME)
 
 $(NAME): libs header prep $(OBJS)
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LDLIBS)
-	@printf "=== finished\n"
+	@printf "=== finished (start programm with \"./fractol mandelbrot\")\n"
 
 $(ODIR)/%.o: $(SDIR)/%.c
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
@@ -88,12 +84,14 @@ debug: CFLAGS += -O0 -DDEBUG -g
 debug: all
 
 release: fclean
-release: CFLAGS	+= -O2 -DNDEBUG
+release: CFLAGS	+= -O3 -DNDEBUG
 release: all clean
 
 libs:
+	@printf "### MAKE LIBS\n"
 ifeq ($(MAKECMDGOALS), $(filter $(MAKECMDGOALS), clean fclean re debug release))
 	@$(call MAKE_LIBS,$(MAKECMDGOALS))
 else
 	@$(call MAKE_LIBS,all)
 endif
+	@printf "=== LIBS DONE\n"
