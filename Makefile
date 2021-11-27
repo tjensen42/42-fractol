@@ -23,7 +23,8 @@ LDLIBS		:= -lm -lft -lmlx -framework OpenGL -framework AppKit
 
 LIBDIRS		:= $(wildcard libs/*)
 LDLIBS		:= $(addprefix -L./, $(LIBDIRS)) $(LDLIBS)
-INCLUDES	:= -I./include/ $(addprefix -I./, $(addsuffix /include, $(LIBDIRS)))
+INCLUDES	:= -I./include/ $(addprefix -I./, $(addsuffix /include, $(LIBDIRS))) \
+		   $(addprefix -I./, $(LIBDIRS))
 
 SDIR		:= src
 ODIR		:= obj
