@@ -6,7 +6,7 @@
 #    By: tjensen <tjensen@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/27 22:03:08 by tjensen           #+#    #+#              #
-#    Updated: 2021/11/29 11:45:41 by tjensen          ###   ########.fr        #
+#    Updated: 2021/11/29 11:48:20 by tjensen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 #	Project specific														   #
 # **************************************************************************** #
 
-NAME		:= project
+NAME		:= fractol
 
 SRCS		:= main.c fractol.c color.c helper.c utils.c \
 			   key_actions.c mouse_actions.c \
