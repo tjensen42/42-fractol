@@ -6,14 +6,15 @@
 #    By: tjensen <tjensen@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/27 22:03:08 by tjensen           #+#    #+#              #
-#    Updated: 2021/10/29 10:19:29 by tjensen          ###   ########.fr        #
+#    Updated: 2021/11/29 11:45:41 by tjensen          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		:= fractol
+# **************************************************************************** #
+#	Project specific														   #
+# **************************************************************************** #
 
-CC			:= gcc
-CFLAGS		:= -Wall -Wextra -Werror
+NAME		:= project
 
 SRCS		:= main.c fractol.c color.c helper.c utils.c \
 			   key_actions.c mouse_actions.c \
@@ -21,22 +22,36 @@ SRCS		:= main.c fractol.c color.c helper.c utils.c \
 			   fractal_burning_ship.c fractal_celtic_mandelbrot.c
 LDLIBS		:= -lm -lft -lmlx -framework OpenGL -framework AppKit
 
-LIBDIRS		:= $(wildcard libs/*)
-LDLIBS		:= $(addprefix -L./, $(LIBDIRS)) $(LDLIBS)
-INCLUDES	:= -I./include/ $(addprefix -I./, $(addsuffix /include, $(LIBDIRS))) \
-		   $(addprefix -I./, $(LIBDIRS))
+# **************************************************************************** #
+#	GENERAL VARIABLES														   #
+# **************************************************************************** #
+
+CC			:= gcc
+CFLAGS		:= -Wall -Wextra -Werror
 
 SDIR		:= src
 ODIR		:= obj
 OBJS		:= $(addprefix $(ODIR)/, $(SRCS:.c=.o))
 
+LIBDIRS		:= $(wildcard lib/*)
+LDLIBS		:= $(addprefix -L./, $(LIBDIRS)) $(LDLIBS)
+INCLUDES	:= -I./inc/ $(addprefix -I./, $(LIBDIRS)) \
+			   $(addprefix -I./, $(addsuffix /inc, $(LIBDIRS))) \
+			   $(addprefix -I./, $(addsuffix /include, $(LIBDIRS)))
+
+# COLORS
+LB   		= \033[0;36m
+B			= \033[0;34m
+Y  			= \033[0;33m
+G		    = \033[0;32m
+R 			= \033[0;31m
+X		    = \033[m
+
 # **************************************************************************** #
 #	SYSTEM SPECIFIC SETTINGS							   					   #
 # **************************************************************************** #
 
-UNAME_S		:= $(shell uname -s)
-
-ifeq ($(UNAME_S), Linux)
+ifeq ($(shell uname -s), Linux)
 	CFLAGS += -D LINUX -Wno-unused-result
 endif
 
@@ -60,24 +75,29 @@ all: $(NAME)
 
 $(NAME): libs header prep $(OBJS)
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LDLIBS)
-	@printf "=== finished (start programm with \"./fractol mandelbrot\")\n"
+	@printf "$(G)======= $(NAME)$(X)\n"
 
 $(ODIR)/%.o: $(SDIR)/%.c
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	@printf "%-57b %b" "$(B)compile $(LB)$@" "$(G)[✓]$(X)\n"
 
 header:
-	@printf "### $(NAME)\n"
+	@printf "###############################################\n"
+	@printf "$(Y)####### $(shell echo "$(NAME)" | tr '[:lower:]' '[:upper:]')$(X)\n"
 
 prep:
 	@mkdir -p $(ODIR)
 
 clean: libs header
 	@$(RM) -r $(ODIR)
+	@$(RM) -r *.dSYM $(SDIR)/*.dSYM $(SDIR)/$(NAME)
+	@printf "%-50b %b" "$(R)clean" "$(G)[✓]$(X)\n"
 
 fclean: libs header clean
 	@$(RM) $(NAME)
+	@printf "%-50b %b" "$(R)fclean" "$(G)[✓]$(X)\n"
 
-re: header fclean all
+re: fclean all
 
 bonus: all
 
@@ -85,14 +105,12 @@ debug: CFLAGS += -O0 -DDEBUG -g
 debug: all
 
 release: fclean
-release: CFLAGS	+= -O3 -DNDEBUG
+release: CFLAGS	+= -O2 -DNDEBUG
 release: all clean
 
 libs:
-	@printf "### MAKE LIBS\n"
 ifeq ($(MAKECMDGOALS), $(filter $(MAKECMDGOALS), clean fclean re debug release))
 	@$(call MAKE_LIBS,$(MAKECMDGOALS))
 else
 	@$(call MAKE_LIBS,all)
 endif
-	@printf "=== LIBS DONE\n"

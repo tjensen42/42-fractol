@@ -6,12 +6,13 @@
 /*   By: tjensen <tjensen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 20:53:09 by tjensen           #+#    #+#             */
-/*   Updated: 2021/09/29 14:00:24 by tjensen          ###   ########.fr       */
+/*   Updated: 2021/11/29 11:46:14 by tjensen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include "key_macos_en.h"
+// #include "key_macos_de.h"
 
 int	key_actions(int key, t_fractol *frctl)
 {
