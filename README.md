@@ -2,7 +2,7 @@
 
 Fract`ol is on of the first computer graphics projects in the 42 core curriculum, where you work with the miniLibx-Library. The project is meant to create graphically beautiful fractals. Its really inspiring to dive into this topic and create some sort of psychedelic effects on the screen.
 
-For further information about this topic I recommend to read this [Bachelor Thesis](https://theses.liacs.nl/pdf/2018-2019-JonckheereLSde.pdf) from Luc de Jonckheere. It describes methods to generate the Mandelbrot and Julia sets efficiently and how to implement a good coloring. For me this thesis was really helpful to do this project.
+For further information about this topic I recommend to read this [Bachelor Thesis](https://theses.liacs.nl/pdf/2018-2019-JonckheereLSde.pdf) from Luc de Jonckheere. It describes methods to generate the Mandelbrot and Julia sets efficiently and how to implement a good coloring. For me this thesis was really helpful to get a better understanding of the project.
 
 ### 🧭 Start here
 
