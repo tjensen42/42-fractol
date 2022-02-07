@@ -69,7 +69,7 @@ endef
 #	RULES																	   #
 # **************************************************************************** #
 
-.PHONY: all $(NAME) header prep clean fclean re bonus debug release libs
+.PHONY: all header prep clean fclean re bonus debug release libs
 
 all: $(NAME)
 
